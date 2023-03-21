@@ -9,6 +9,7 @@ times = 5
 # Esto toma la fecha y hora actual.
 init_time = datetime.now()
 print(f"¡Veremos cuanto tardas en responder estas {times} operaciones!")
+correctos=0
 for i in range(0, times):
 # Se eligen números y operador al azar
     number_1 = randrange(10)
@@ -18,16 +19,18 @@ for i in range(0, times):
     print(f"{i+1}- ¿Cuánto es {number_1} {operator} {number_2}?")
     # Le pedimos al usuario el resultado
     result = input("resultado: ")
-    if operator == "+":
+    if operator == "+" :
         resul = number_1+number_2
-    elif operator == "*":
+    elif operator == "*" :
         resul = number_1*number_2
-    elif operator == "-":
+    elif operator == "-" :
         resul = number_1-number_2
     else:
-        resul = number_1/number_2
-    correctos = 0
-    if result == resul:
+        if number_1!=0 and number_2!=0:
+            resul = number_1/number_2
+        else:
+            print("no se puede dividir por cero pavo")
+    if int(result) == resul:
         print("resultado corecto!!")
         correctos = correctos+1
     else:
@@ -39,4 +42,4 @@ end_time = datetime.now()
 total_time = end_time - init_time
 # Mostramos ese tiempo en segundos.
 print(f"\n Tardaste {total_time.seconds} segundos.")
-print("obtuviste {correctos} respuestas correctas, buen trabajo!!")
+print(f"\n obtuviste {correctos} respuestas correctas, buen trabajo!!")
